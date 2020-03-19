@@ -63,11 +63,6 @@ function myMove() {
 			counter -= 0.003;
 		}
 
-		var p1, p2;
-		p1 = svg.getElementById('polyline').getPointAtLength(counter * curveLength).x - 35;
-		p2 = svg.getElementById('polyline').getPointAtLength(counter * curveLength).y - 15;
-		cat.setAttribute("transform",`translate( ${p1} , ${p2} )`);
-
 		for (var i = 0; i < coords.length; i++) {
 			if (Math.round(getTranslate(cat).x) == (Math.round(coords[i].x) - 35) &&  Math.round(getTranslate(cat).y) == (Math.round(coords[i].y) - 15)){
 				anim = false;
@@ -76,6 +71,11 @@ function myMove() {
 				setTimeout(pause, animLength);
 			}
 		}
+
+		var p1, p2;
+		p1 = svg.getElementById('polyline').getPointAtLength(counter * curveLength).x - 35;
+		p2 = svg.getElementById('polyline').getPointAtLength(counter * curveLength).y - 15;
+		cat.setAttribute("transform",`translate( ${p1} , ${p2} )`);
 
 		if (anim) requestAnimationFrame(moveStar);
 	}
@@ -97,6 +97,7 @@ function createCurve(){
 		coords.push({x: paths[i].getPointAtLength(0).x, y: paths[i].getPointAtLength(0).y, data: paths[i].getAttribute('data-tooltip')});
 	}
 	cat.setAttribute("transform","translate("+ (coords[0].x - 35)  + "," + (coords[0].y - 15) + ")");
+
 	document.getElementById('polyline').setAttribute('points', points);
 	curveLength = svg.getElementById('polyline').getTotalLength();
 }
