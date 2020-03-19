@@ -93,8 +93,8 @@ function getTranslate(myElement) {
 
 function createCurve(){
 	for (var i = 0; i < paths.length; i++) {
-		points += paths[i].getPointAtLength(0).x + ',' +  paths[i].getPointAtLength(0).y + " ";
-		coords.push({x: paths[i].getPointAtLength(0).x, y: paths[i].getPointAtLength(0).y, data: paths[i].getAttribute('data-tooltip')});
+			points += paths[i].getPointAtLength(0).x + ',' +  paths[i].getPointAtLength(0).y + " ";
+			coords.push({x: paths[i].getPointAtLength(0).x, y: paths[i].getPointAtLength(0).y, data: paths[i].getAttribute('data-tooltip')});
 	}
 	cat.setAttribute("transform","translate("+ (coords[0].x - 35)  + "," + (coords[0].y - 15) + ")");
 
